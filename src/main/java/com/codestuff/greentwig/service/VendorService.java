@@ -1,14 +1,14 @@
-package com.codestuff.greentwig.dao;
+package com.codestuff.greentwig.service;
 
 import java.util.List;
 
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import com.codestuff.greentwig.vo.Vendor;
 
-@Component
-public interface VendorDAO {
-	
+@Service
+public interface VendorService {
+
 	public void add(Vendor vendor);
 	
 	public void delete(String vendorID);
@@ -18,4 +18,5 @@ public interface VendorDAO {
 	public List<Vendor> getAll();
 	
 	public void update(Vendor vendor);
+	
 }
