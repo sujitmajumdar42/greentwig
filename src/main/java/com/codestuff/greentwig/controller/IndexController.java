@@ -8,12 +8,18 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.codestuff.greentwig.dao.VendorDAO;
+import com.codestuff.greentwig.vo.Vendor;
+
 @RestController
 @RequestMapping("api/v1/")
 public class IndexController {
 	
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
+	
+	@Autowired
+	private VendorDAO vendorDAO;
 	
 	@RequestMapping("/f5")
 	public String f5Monitor() {
@@ -28,6 +34,10 @@ public class IndexController {
 			System.out.println("Request Received at F5Monitor"+con.getMetaData().getURL());
 			url = con.getMetaData().getURL();
 			response="<p><strong>"+url+"</strong></p>";
+			Vendor vendor = new Vendor();
+			vendor.setVendorID(System.currentTimeMillis()+"");
+			vendor.setDesc("Heritage");
+			vendorDAO.add(vendor);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
