@@ -20,6 +20,7 @@ public class VendorDAOImpl implements VendorDAO {
 	
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
+	
 	@Override
 	public void add(Vendor vendor) {
 		jdbcTemplate.update(VENDOR_INSERT,vendor.getVendorID(),vendor.getDesc()); 
